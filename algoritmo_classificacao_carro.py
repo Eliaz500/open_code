@@ -53,7 +53,7 @@ for linha in tabela.itertuples():
     elif linha.buying == 'low' and linha.maint == 'med' and linha.lug_boot == 'big' and linha.safety == 'high':
         quantidade_vgood += 1
 
-
+print("Resultado")
 print("Quantidade unacc: " + str(quantidade_unacc))
 print("Quantidade acc: " + str(quantidade_acc))
 print("Quantidade vgood: " + str(quantidade_vgood))
