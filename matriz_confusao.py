@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # Criar um matriz 2x2 com os nome das colunas
 dados = {'P': ["VP", "FN"], 'N': ["FP", "VN"]}
@@ -138,3 +140,42 @@ print(f"\nSoma da diagonal invertida {soma_diagonal_invertida}")
 # diagonal invertida divida por todos os valores
 taxa_erro = soma_diagonal_invertida / soma_total
 print(f"Taxa de erro da matriz confusão {taxa_erro}")
+
+########################################################
+# Recall e Precisão
+# Criar um matriz com valores
+dados = {'P': [71, 59], 'N': [0, 0]}
+
+matriz_confusao = pd.DataFrame(dados)
+
+# Definir os nomes para as linhas
+matriz_confusao.index = ['P', 'N']
+
+# Exibir a matriz
+print("\nRecall e Precisão")
+print(matriz_confusao)
+
+# Exibir a matriz de confusão como um gráfico
+plt.figure(figsize=(8, 6))
+sns.heatmap(matriz_confusao, annot=True, fmt='d', cmap='Blues')
+plt.xlabel('Classes Preditas')
+plt.ylabel('Classes Reais')
+plt.title('Matriz de Confusão')
+plt.show()
+
+#METRICAS PARA A CLASSE POSITIVA
+# RECALL E PRECISÃO
+# Recall = VP / (VP + FN) ou VP / (Linha P)
+# Precisão = VP / (VP + FP) ou VP / (coluna P)
+
+# Calcular o recall
+recall = matriz_confusao.iloc[0, 0] / (matriz_confusao.iloc[0, 0] + matriz_confusao.iloc[0, 1])
+
+print(f"\nO valor do Recall {recall}")
+
+# Calcular o Precisão
+precisao = matriz_confusao.iloc[0, 0] / (matriz_confusao.iloc[0, 0] + matriz_confusao.iloc[1, 0])
+
+print(f"\nO valor da Precisão {precisao}")
+
+
