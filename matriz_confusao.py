@@ -144,7 +144,7 @@ print(f"Taxa de erro da matriz confusão {taxa_erro}")
 ########################################################
 # Recall e Precisão
 # Criar um matriz com valores
-dados = {'P': [71, 59], 'N': [0, 0]}
+dados = {'P': [62, 0], 'N': [5, 59]}
 
 matriz_confusao = pd.DataFrame(dados)
 
@@ -177,5 +177,15 @@ print(f"\nO valor do Recall {recall}")
 precisao = matriz_confusao.iloc[0, 0] / (matriz_confusao.iloc[0, 0] + matriz_confusao.iloc[1, 0])
 
 print(f"\nO valor da Precisão {precisao}")
+
+#################################################################################
+#    Medida-F
+##############################################################################
+# F1  = 2 x Precisão x Recall / (Precisão + Recall)
+
+medida_F = 2 * precisao * recall / (precisao + recall)
+
+print(f"\nO valor da Medida F {medida_F}")
+
 
 
